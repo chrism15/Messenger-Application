@@ -1,47 +1,52 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import './App.css'
 
 function App() {
+  const [messages, setMessages] = useState([])
+
+  console.log(messages)
   return <main>
 
-  <header> 
-      <img  className="logo" 
-          src="https://www.androidpolice.com/wp-content/uploads/2018/09/android-messages-icon-35.png"
+    <header> 
+      <img className="logo"
+        alt="logo"
+        src="https://miro.medium.com/max/1024/0*tbErRTQ6dR298pDo" 
       />
-      <span>Messenger</span> 
-  </header>
+      Messages
+    </header>
 
-  <TextInput onSend={t=> console.log(t)} />
-  
-  <img className="pic"
-      src="https://retohercules.com/images/android-material-design-icons-png-18.png"
-  />
+    <div className="messageScroll">
+    {messages.map((m,i)=>{
+      return <div key ={i} className="message">{m}</div>
+    })}    
+    </div>
 
-  <img className="add"
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2hUsO6vpxKDGWoM8kgSUP6fHoAG47MTla2L3bYiWPwhVTQXnG&s"
-  />
+    {/* messages */}
 
+    <TextInput onSend={(text)=> {
+      setMessages([text, ...messages])
+    }} />
+    
   </main>
 }
 
 function TextInput(props){
-  const [text,setText] = useState('')
-
-  return <div className="text-input">
-      <input className="input" value={text} 
+  var [text, setText] = useState('') 
+  // normal js comment
+  return <div className="text-input-wrap">
+    <input value={text} className="text-input"
       placeholder="Text message"
-      onChange={e=> setText(e.target .value)}
-      />
-      <button className="button" onClick={()=> {
-          props.onSend(text)
-          setText('')
-      }}>
-      <img  className="button-img" 
-          src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_send_48px-512.png"
-      />
-      </button>
-  </div>
+      onChange={e=> setText(e.target.value)}
+    />
+    <button onClick={()=> {
+      if(text){
+       props.onSend(text)
+      }
+      setText('')
+    }} className="button" disabled={!text}>
+      SEND
+    </button>
+  </div> 
 }
 
-export default App;
+export default App

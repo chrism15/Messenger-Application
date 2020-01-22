@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
+*{
+  box-sizing:border-box;
+}
+html,body{
+  height:100%;
+  position: fixed;
+  top:0;left:0;bottom:0;right:0;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+  color:black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-title{
+  font-size:15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100px;
+  color:black;
+  padding: 0px 10px;
+  background:white;
+
+  display:flex;
+  align-items:center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.logo {
+  height:50px;
+  margin-right:10px;
 }
 
-.App-link {
-  color: #61dafb;
+.text-input-wrap{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:33px;
+  border-top:1px solid white;
+  background:rgba(255,255,255,0.2);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text-input{
+  border:1px solid black;
+  width:100%;
+  border-radius:15px;
+  padding:0 5px;
+  position:absolute;
+  left:4px;
+  top:4px;
+  height:24px;
+}
+.text-input:focus{
+  outline: 1px solid blue;
+}
+.button:hover{
+  background:blue;
+  color:white;
+}
+.button:focus{
+  outline: none;
+  border:1px solid blue;
+}
+
+.button{
+  cursor:pointer;
+  position:absolute;
+  right:0;
+  top:4px;
+  border-radius:15px;
+}
+
+button:disabled{
+  color:white;
+  background:white;
+}
+
+.messageScroll{
+  height:calc(100vh - 148px);
+  width:100vw;
+  position: absolute;
+  top:100px;
+  left:0px;
+  display:flex;
+  flex-direction:column-reverse;
+  overflow-y:scroll;
+}
+.message {
+  color:white;
+  background: black;
+  margin:5px;
+  border-radius:5px;
+  padding:6px;
+  display: inline-block;
 }
