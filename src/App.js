@@ -1,52 +1,77 @@
-import React, {useState} from 'react'
+import React, {useState/*, useEffect*/} from 'react'
 import './App.css'
+//import {db} from './db'
+import NamePicker from './namePicker'
+import { MdSend } from "react-icons/md";
 
 function App() {
   const [messages, setMessages] = useState([])
-
-  console.log(messages)
+  const [name,setName] = useState('')
+/*
+  useEffect(()=>{
+    db.listen({
+      receive:m=> setMessages(current=> [m,...current]),
+    })
+  }, [])
+*/
+console.log(messages)
+  
   return <main>
 
     <header> 
+      <div style={{display:'flex',alignItems:'center'}}>
       <img className="logo"
         alt="logo"
         src="https://miro.medium.com/max/1024/0*tbErRTQ6dR298pDo" 
       />
-      Messages
+      Messenger
+      </div>
+      <NamePicker  onSave={setName} />
     </header>
 
-    <div className="messageScroll">
-    {messages.map((m,i)=>{
-      return <div key ={i} className="message">{m}</div>
-    })}    
+    <div className="messages">
+      {messages.map((m,i)=>{
+        return <div key={i} className="message-wrap">
+          <div className="message">{m}</div>
+        </div>
+      })}
     </div>
 
-    {/* messages */}
-
     <TextInput onSend={(text)=> {
+      /*
+      db.send({
+        text, name, ts: new Date(),
+      })*/
       setMessages([text, ...messages])
     }} />
     
   </main>
 }
 
+
 function TextInput(props){
   var [text, setText] = useState('') 
-  // normal js comment
   return <div className="text-input-wrap">
-    <input value={text} className="text-input"
+    <input 
+      value={text} 
+      className="text-input"
       placeholder="Text message"
       onChange={e=> setText(e.target.value)}
+      onKeyPress={e=> {
+        if(e.key==='Enter') {
+          if(text) props.onSend(text)
+          setText('')
+        }
+      }}
     />
     <button onClick={()=> {
-      if(text){
-       props.onSend(text)
-      }
+      if(text) props.onSend(text)
       setText('')
-    }} className="button" disabled={!text}>
-      SEND
+    }} className="button"
+      disabled={!text}>
+      <MdSend />
     </button>
-  </div> 
+  </div>
 }
 
-export default App
+export default App 
