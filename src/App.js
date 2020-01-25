@@ -1,56 +1,62 @@
-import React, {useState/*, useEffect*/} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css'
-//import {db} from './db'
+import {db, useDB} from './db'
 import NamePicker from './namePicker'
 import { MdSend } from "react-icons/md";
+import { BrowserRouter, Route } from "react-router-dom";
 
-function App() {
-  const [messages, setMessages] = useState([])
-  const [name,setName] = useState('')
-/*
+function App(){
   useEffect(()=>{
-    db.listen({
-      receive:m=> setMessages(current=> [m,...current]),
-    })
+    const {pathname} = window.location
+    if(pathname.length<2) window.location.pathname='home'
   }, [])
-*/
-console.log(messages)
-  
+  return <BrowserRouter>
+    <Route path="/:room" component={Room}/>
+  </BrowserRouter>
+}
+
+function Room(props) {
+  const {room} = props.match.params
+  const [name, setName] = useState('')
+  const messages = useDB(room)
+
   return <main>
 
-    <header> 
-      <div style={{display:'flex',alignItems:'center'}}>
-      <img className="logo"
-        alt="logo"
-        src="https://miro.medium.com/max/1024/0*tbErRTQ6dR298pDo" 
-      />
-      Messenger
+    <header>
+      <div className="logo-wrap">
+        <img className="logo"
+          alt="logo"
+          src="https://miro.medium.com/max/1024/0*tbErRTQ6dR298pDo" 
+        />
+        <div className="title">Messenger</div>
       </div>
-      <NamePicker  onSave={setName} />
+      <NamePicker onSave={setName} />
     </header>
 
     <div className="messages">
       {messages.map((m,i)=>{
-        return <div key={i} className="message-wrap">
-          <div className="message">{m}</div>
+        return <div key={i} className="message-wrap"
+          from={m.name===name?'me':'you'}>
+          <div className="message">
+            <div className="msg-name">{m.name}</div>
+            <div className="msg-text">{m.text}</div>
+          </div>
         </div>
       })}
     </div>
 
     <TextInput onSend={(text)=> {
-      /*
       db.send({
-        text, name, ts: new Date(),
-      })*/
-      setMessages([text, ...messages])
+        text, name, ts: new Date(), room
+      })
     }} />
     
   </main>
 }
 
-
 function TextInput(props){
   var [text, setText] = useState('') 
+  // normal js comment
   return <div className="text-input-wrap">
     <input 
       value={text} 
@@ -69,9 +75,29 @@ function TextInput(props){
       setText('')
     }} className="button"
       disabled={!text}>
-      <MdSend />
+    <MdSend />
     </button>
   </div>
 }
 
-export default App 
+export default App
+
+/*
+import { BrowserRouter, Route } from "react-router-dom";
+function App() {
+  useEffect(()=>{
+    const {pathname} = window.location
+    if(pathname.length<2){
+      window.location.pathname = Math.random().toString(36).slice(7)
+    }
+  },[])
+  return (<BrowserRouter>
+    <Route path="/:room" component={Content} />
+  </BrowserRouter>)
+}
+*/
+
+
+
+
+// const {room} = props.match.params
