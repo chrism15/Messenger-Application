@@ -1,11 +1,12 @@
 *{
   box-sizing:border-box;
 }
-html,body{
+html,body, #root{
   height:100%;
   position: fixed;
   top:0;left:0;bottom:0px;right:0;
 }
+
 body{
   font-family:-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
   height:100%;
@@ -26,7 +27,7 @@ header{
   left:0;
   width:100%;
   height:48px;
-  font-size: 16px;
+  font-size: 1rem;
   color:black;
   padding: 0px 10px;
   background:white;
@@ -52,27 +53,39 @@ header{
   position:absolute;
   bottom:4px;
   left:2px;
-  width:99%;
+  width:97%;
   height:48px;
   border-top:1px solid white;
 }
 
 .text-input{
   border:1px solid black;
-  width:99%;
+  width:97.5%;
   border-radius:17px;
   padding:0 5px;
   position:absolute;
-  left:4px;
+  left:40px;
   top:4px;
   height:38px;
   outline:none;
 }
+
+.photo-button{
+  position: absolute;
+  left:2px;
+  bottom:9px;
+  height:35px;
+  width:35px;
+  border-radius:20px;
+  border:1px solid black;
+  background:white;
+}
+
 .button{
   cursor:pointer;
   position: absolute;
   height:29px;
-  right:10px;
+  right:-15px;
   top:7px;
   margin:0px 6px;
   background:transparent;
@@ -89,7 +102,7 @@ header{
 }
 
 .messages{
-  height:calc(100vh - 96px);
+  height:calc(100% - 8rem);
   width:100vw;
   position: absolute;
   top:48px;
