@@ -51,50 +51,35 @@ header{
 
 .text-input-wrap{
   position:absolute;
-  bottom:4px;
-  left:2px;
-  width:97%;
+  bottom:15px;
+  left:10px;
+  width:100%;
   height:48px;
   border-top:1px solid white;
 }
 
 .text-input{
   border:1px solid black;
-  width:97.5%;
+  width:95%;
   border-radius:17px;
-  padding:0 5px;
+  padding:0 10px;
   position:absolute;
-  left:40px;
+  left:0px;
   top:4px;
   height:38px;
   outline:none;
 }
 
-.photo-button{
+.button{
   position: absolute;
-  left:2px;
-  bottom:9px;
-  height:35px;
-  width:35px;
+  left:96%;
+  bottom:6px;
+  height:37px;
+  width:37px;
   border-radius:20px;
   border:1px solid black;
   background:white;
-}
-
-.button{
-  cursor:pointer;
-  position: absolute;
-  height:29px;
-  right:-15px;
-  top:7px;
-  margin:0px 6px;
-  background:transparent;
-  border:1px solid white;
   color:black;
-  font-size:20px;
-  padding:4px;
-  cursor: pointer;
-  outline:none;
 }
 
 .button:hover{
@@ -110,6 +95,7 @@ header{
   display:flex;
   flex-direction: column-reverse;
   overflow-y:auto;
+  
 }
 .message-wrap{
   width:100%;
