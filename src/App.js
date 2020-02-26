@@ -78,6 +78,19 @@ function TextInput(props){
 
   // normal js comment
   return <div className="text-input-wrap">
+    <input
+      size={text}
+      className="size-input"
+      placeholder="17"
+      onChange={e=> setText(e.target.size)}
+      onKeyPress={e=> {
+        if(e.key==='Enter') {
+          if(text) props.onSend(text)
+            setText('')
+        }
+      }}
+    /> 
+
     <input 
       value={text} 
       className="text-input"
@@ -90,6 +103,9 @@ function TextInput(props){
         }
       }}
     />
+
+    
+
     <button onClick={()=> {
       if(text) props.onSend(text)
       setText('')

@@ -60,7 +60,7 @@ header{
 
 .text-input{
   border:1px solid black;
-  width:95%;
+  width:93%;
   border-radius:17px;
   padding:0 10px;
   position:absolute;
@@ -87,6 +87,7 @@ header{
 }
 
 .messages{
+  font-size: 50px;
   height:calc(100% - 8rem);
   width:100vw;
   position: absolute;
@@ -158,4 +159,16 @@ header{
   top:-16px;
   left:5px;
 
+}
+
+.size-input{
+  border:1px solid black;
+  width:2%;
+  border-radius:17px;
+  padding:0 10px;
+  position:absolute;
+  left:1795px;
+  top:4px;
+  height:38px;
+  outline:none;
 }
