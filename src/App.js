@@ -75,6 +75,7 @@ function Message({m, name}){
 
 function TextInput(props){
   var [text, setText] = useState('') 
+  var [tsize, settSize] = useState('')
 
   // normal js comment
   return <div className="text-input-wrap">
@@ -82,11 +83,11 @@ function TextInput(props){
       size={text}
       className="size-input"
       placeholder="17"
-      onChange={e=> setText(e.target.size)}
+      onChange={e=> settSize(e.target.size)}
       onKeyPress={e=> {
         if(e.key==='Enter') {
-          if(text) props.onSend(text)
-            setText('')
+          if(tsize) var textSize = tsize
+            settSize('')
         }
       }}
     /> 
