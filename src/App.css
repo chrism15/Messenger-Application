@@ -87,7 +87,7 @@ header{
 }
 
 .messages{
-  font-size: 50px;
+  font-size: 17px;
   height:calc(100% - 8rem);
   width:100vw;
   position: absolute;

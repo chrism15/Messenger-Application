@@ -10,7 +10,7 @@ function App(){
 
   useEffect(()=>{
     const {pathname} = window.location
-    if(pathname.length<2) window.location.pathname='home'
+    if(pathname.length<2) window.location.pathname='final'
   }, [])
   return <BrowserRouter>
     <Route path="/:room" component={Room} />
