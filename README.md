@@ -1,5 +1,3 @@
-git add . 
+Simple messaging application running on Firebase.
 
-git commit -m "message"
-
-git push origin master
+- CMO
