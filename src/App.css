@@ -60,7 +60,7 @@ header{
 
 .text-input{
   border:1px solid black;
-  width:93%;
+  width:96%;
   border-radius:17px;
   padding:0 10px;
   position:absolute;
@@ -72,7 +72,7 @@ header{
 
 .button{
   position: absolute;
-  left:96%;
+  left:96.5%;
   bottom:6px;
   height:37px;
   width:37px;
